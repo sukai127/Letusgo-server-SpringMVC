@@ -23,12 +23,28 @@ public class ItemDaoImpl {
         itemlist = jdbcTemplate.query(sql,new RowMapper<Item>() {
             @Override
             public Item mapRow(ResultSet resultSet, int i) throws SQLException {
-                
+
                 return new Item(resultSet.getInt("id"),resultSet.getString("barcode"),
                         resultSet.getString("name"),resultSet.getString("unit"),
                         resultSet.getDouble("price"),null);
             }
         });
         return itemlist;
+    }
+
+    public Item getItem(int id){
+
+        Item item;
+        String sql = "select * from item where id=?";
+
+        item = jdbcTemplate.queryForObject(sql,new Object[]{id},new RowMapper<Item>() {
+            @Override
+            public Item mapRow(ResultSet resultSet, int i) throws SQLException {
+                return new Item(resultSet.getInt("id"),resultSet.getString("barcode"),
+                        resultSet.getString("name"),resultSet.getString("unit"),
+                        resultSet.getDouble("price"),null);
+            }
+        });
+        return item;
     }
 }
