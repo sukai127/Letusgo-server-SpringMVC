@@ -57,4 +57,11 @@ public class ItemServiceImplTest {
         itemService.insertItem(itemList.get(0));
         verify(itemDao).insertItem(itemList.get(0));
     }
+
+    @Test
+    public void should_delete_item(){
+
+        itemService.deleteItem(1);
+        verify(itemDao).deleteItem(1);
+    }
 }
