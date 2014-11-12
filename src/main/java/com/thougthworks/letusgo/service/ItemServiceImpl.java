@@ -35,6 +35,6 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public void updateItem(Item item) {
-
+        itemDao.updateItem(item);
     }
 }
