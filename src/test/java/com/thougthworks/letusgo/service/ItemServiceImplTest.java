@@ -1,6 +1,7 @@
 package com.thougthworks.letusgo.service;
 
 import com.google.common.collect.ImmutableList;
+import com.thougthworks.letusgo.dao.ItemDao;
 import com.thougthworks.letusgo.dao.ItemDaoImpl;
 import com.thougthworks.letusgo.model.Category;
 import com.thougthworks.letusgo.model.Item;
@@ -20,7 +21,7 @@ public class ItemServiceImplTest {
 
     @Before
     public void init(){
-        ItemDaoImpl itemDao = mock(ItemDaoImpl.class);
+        ItemDao itemDao = mock(ItemDaoImpl.class);
         ImmutableList<Item> itemList = ImmutableList.of(new Item(1,"ITEM000001","苹果","斤",3.5,new Category(1,"水果")),
                 new Item(2,"ITEM000002","可乐","瓶",3.5,new Category(2,"饮料")),
                 new Item(3,"ITEM000003","鞋","双",95,new Category(3,"服装")));

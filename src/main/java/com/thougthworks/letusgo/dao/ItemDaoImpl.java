@@ -11,10 +11,11 @@ import java.sql.SQLException;
 import java.util.List;
 
 @Repository
-public class ItemDaoImpl {
+public class ItemDaoImpl implements ItemDao {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    @Override
     public List<Item> getItems(){
 
         List<Item> itemlist;
@@ -32,6 +33,7 @@ public class ItemDaoImpl {
         return itemlist;
     }
 
+    @Override
     public Item getItem(int id){
 
         Item item;
@@ -48,12 +50,14 @@ public class ItemDaoImpl {
         return item;
     }
 
+    @Override
     public void insertItem(Item item){
         String sql = "insert into item values(null,?,?,?,?,?)";
 
         jdbcTemplate.update(sql,item.getUnit(),item.getPrice(),item.getCategory().getId());
     }
 
+    @Override
     public void updateItem(Item item){
 
         String sql = "update item set barcode=?,name=?,unit=?,price=?,category_id=? where id=?";
@@ -62,6 +66,7 @@ public class ItemDaoImpl {
                      item.getPrice(),item.getCategory().getId(),item.getId());
     }
 
+    @Override
     public void deleteItem(Item item){
 
         String sql = "delete from item where id = ?";
