@@ -47,4 +47,11 @@ public class ItemDaoImpl {
         });
         return item;
     }
+
+    public void insertItem(Item item){
+        String sql = "insert into item values(null,?,?,?,?,?)";
+
+        jdbcTemplate.update(sql,new Object[]{item.getBarcode(),item.getName(),
+                item.getUnit(),item.getPrice(),item.getCategory().getId()});
+    }
 }
