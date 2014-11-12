@@ -15,6 +15,6 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public List<Item> getItems() {
-        return null;
+        return itemDao.getItems();
     }
 }
