@@ -54,4 +54,12 @@ public class ItemDaoImpl {
         jdbcTemplate.update(sql,new Object[]{item.getBarcode(),item.getName(),
                 item.getUnit(),item.getPrice(),item.getCategory().getId()});
     }
+
+    public void updateItem(Item item){
+        
+        String sql = "update item set barcode=?,name=?,unit=?,price=?,category_id=? where id=?";
+
+        jdbcTemplate.update(sql,new Object[]{item.getBarcode(),item.getName(),item.getUnit(),
+                     item.getPrice(),item.getCategory().getId(),item.getId()});
+    }
 }
