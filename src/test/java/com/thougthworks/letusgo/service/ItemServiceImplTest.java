@@ -38,4 +38,12 @@ public class ItemServiceImplTest {
         assertThat(itemList.get(1).getPrice()).isEqualTo(3.5);
         assertThat(itemList.get(2).getCategory().getName()).isEqualTo("服装");
     }
+
+    @Test
+    public void should_return_item_when_input_id(){
+
+        Item item = itemService.getItem(1);
+
+        assertThat(item.getBarcode()).isEqualTo("ITEM000001");
+    }
 }
