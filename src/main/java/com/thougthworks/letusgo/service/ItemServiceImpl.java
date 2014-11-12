@@ -20,6 +20,6 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public Item getItem(int id) {
-        return null;
+        return itemDao.getItem(id);
     }
 }

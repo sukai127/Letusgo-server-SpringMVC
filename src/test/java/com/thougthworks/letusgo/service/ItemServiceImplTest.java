@@ -26,6 +26,8 @@ public class ItemServiceImplTest {
                 new Item(2,"ITEM000002","可乐","瓶",3.5,new Category(2,"饮料")),
                 new Item(3,"ITEM000003","鞋","双",95,new Category(3,"服装")));
         when(itemDao.getItems()).thenReturn(itemList);
+
+        when(itemDao.getItem(1)).thenReturn(itemList.get(0));
         ReflectionTestUtils.setField(itemService,"itemDao",itemDao);
     }
 
