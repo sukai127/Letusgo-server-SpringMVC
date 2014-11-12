@@ -8,11 +8,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ItemServiceImpl {
+public class ItemServiceImpl implements ItemService {
 
     @Autowired
     private ItemDao itemDao;
 
+    @Override
     public List<Item> getItems() {
         return null;
     }

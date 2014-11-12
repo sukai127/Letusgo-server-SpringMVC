@@ -17,7 +17,7 @@ import static org.mockito.Mockito.when;
 
 public class ItemServiceImplTest {
 
-    private ItemServiceImpl itemService = new ItemServiceImpl();
+    private ItemService itemService = new ItemServiceImpl();
 
     @Before
     public void init(){
