@@ -30,6 +30,6 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public void deleteItem(int id) {
-
+        itemDao.deleteItem(id);
     }
 }
