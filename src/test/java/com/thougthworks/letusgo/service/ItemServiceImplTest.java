@@ -13,16 +13,18 @@ import java.util.List;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 public class ItemServiceImplTest {
 
     private ItemService itemService = new ItemServiceImpl();
-
+    private ImmutableList<Item> itemList;
+    private ItemDao itemDao;
     @Before
     public void init(){
-        ItemDao itemDao = mock(ItemDaoImpl.class);
-        ImmutableList<Item> itemList = ImmutableList.of(new Item(1,"ITEM000001","苹果","斤",3.5,new Category(1,"水果")),
+        itemDao = mock(ItemDaoImpl.class);
+        itemList = ImmutableList.of(new Item(1,"ITEM000001","苹果","斤",3.5,new Category(1,"水果")),
                 new Item(2,"ITEM000002","可乐","瓶",3.5,new Category(2,"饮料")),
                 new Item(3,"ITEM000003","鞋","双",95,new Category(3,"服装")));
         when(itemDao.getItems()).thenReturn(itemList);
@@ -47,5 +49,12 @@ public class ItemServiceImplTest {
         Item item = itemService.getItem(1);
 
         assertThat(item.getBarcode()).isEqualTo("ITEM000001");
+    }
+
+    @Test
+    public void should_insert_item(){
+
+        itemService.insertItem(itemList.get(0));
+        verify(itemDao).insertItem(itemList.get(0));
     }
 }

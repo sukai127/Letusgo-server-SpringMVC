@@ -22,4 +22,9 @@ public class ItemServiceImpl implements ItemService {
     public Item getItem(int id) {
         return itemDao.getItem(id);
     }
+
+    @Override
+    public void insertItem(Item item) {
+
+    }
 }
