@@ -1,8 +1,8 @@
-package com.thougthworks.letusgo.model;
+package com.thoughtworks.letusgo.model;
 
 public class CartItem {
     private int id;
-    private Item item;
+    private com.thoughtworks.letusgo.model.Item item;
     private int count;
 
     public CartItem() {

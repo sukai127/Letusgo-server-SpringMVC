@@ -1,6 +1,6 @@
-package com.thougthworks.letusgo.service;
+package com.thoughtworks.letusgo.service;
 
-import com.thougthworks.letusgo.model.Item;
+import com.thoughtworks.letusgo.model.Item;
 
 import java.util.List;
 

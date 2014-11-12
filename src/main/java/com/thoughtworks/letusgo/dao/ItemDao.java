@@ -1,6 +1,6 @@
-package com.thougthworks.letusgo.dao;
+package com.thoughtworks.letusgo.dao;
 
-import com.thougthworks.letusgo.model.Item;
+import com.thoughtworks.letusgo.model.Item;
 
 import java.util.List;
 

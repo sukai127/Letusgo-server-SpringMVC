@@ -1,10 +1,10 @@
-package com.thougthworks.letusgo.service;
+package com.thoughtworks.letusgo.service;
 
 import com.google.common.collect.ImmutableList;
-import com.thougthworks.letusgo.dao.ItemDao;
-import com.thougthworks.letusgo.dao.ItemDaoImpl;
-import com.thougthworks.letusgo.model.Category;
-import com.thougthworks.letusgo.model.Item;
+import com.thoughtworks.letusgo.dao.ItemDao;
+import com.thoughtworks.letusgo.dao.ItemDaoImpl;
+import com.thoughtworks.letusgo.model.Category;
+import com.thoughtworks.letusgo.model.Item;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.test.util.ReflectionTestUtils;

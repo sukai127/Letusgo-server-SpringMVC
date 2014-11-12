@@ -1,4 +1,4 @@
-package com.thougthworks.letusgo.model;
+package com.thoughtworks.letusgo.model;
 
 public class Item {
     private int id;

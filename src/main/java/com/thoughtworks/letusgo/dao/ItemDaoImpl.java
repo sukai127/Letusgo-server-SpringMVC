@@ -1,6 +1,6 @@
-package com.thougthworks.letusgo.dao;
+package com.thoughtworks.letusgo.dao;
 
-import com.thougthworks.letusgo.model.Item;
+import com.thoughtworks.letusgo.model.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
