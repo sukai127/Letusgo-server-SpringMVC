@@ -51,22 +51,21 @@ public class ItemDaoImpl {
     public void insertItem(Item item){
         String sql = "insert into item values(null,?,?,?,?,?)";
 
-        jdbcTemplate.update(sql,new Object[]{item.getBarcode(),item.getName(),
-                item.getUnit(),item.getPrice(),item.getCategory().getId()});
+        jdbcTemplate.update(sql,item.getUnit(),item.getPrice(),item.getCategory().getId());
     }
 
     public void updateItem(Item item){
 
         String sql = "update item set barcode=?,name=?,unit=?,price=?,category_id=? where id=?";
 
-        jdbcTemplate.update(sql,new Object[]{item.getBarcode(),item.getName(),item.getUnit(),
-                     item.getPrice(),item.getCategory().getId(),item.getId()});
+        jdbcTemplate.update(sql,item.getBarcode(),item.getName(),item.getUnit(),
+                     item.getPrice(),item.getCategory().getId(),item.getId());
     }
 
     public void deleteItem(Item item){
-        
+
         String sql = "delete from item where id = ?";
 
-        jdbcTemplate.update(sql,new Object[]{item.getId()});
+        jdbcTemplate.update(sql,item.getId());
     }
 }

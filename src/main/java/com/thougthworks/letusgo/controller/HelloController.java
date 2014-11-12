@@ -1,4 +1,4 @@
-package com.thougthworks.letusgo;
+package com.thougthworks.letusgo.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
