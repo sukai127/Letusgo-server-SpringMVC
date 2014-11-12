@@ -60,6 +60,16 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-oxm:4.1.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.codehaus.jackson:jackson-mapper-asl:1.9.11" level="project" />
     <orderEntry type="library" name="Maven: org.codehaus.jackson:jackson-core-asl:1.9.11" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-log4j12:1.7.2" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.2" level="project" />
+    <orderEntry type="library" name="Maven: log4j:log4j:1.2.17" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-jdbc:4.1.1.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-tx:4.1.1.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: com.google.guava:guava:18.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.mockito:mockito-all:1.9.5" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.easytesting:fest-assert-core:2.0M10" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.easytesting:fest-util:1.2.5" level="project" />
+    <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.33" level="project" />
   </component>
 </module>
 
