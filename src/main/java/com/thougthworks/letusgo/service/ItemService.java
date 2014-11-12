@@ -4,9 +4,6 @@ import com.thougthworks.letusgo.model.Item;
 
 import java.util.List;
 
-/**
- * Created by sukai on 11/12/14.
- */
 public interface ItemService {
     List<Item> getItems();
 
@@ -15,4 +12,6 @@ public interface ItemService {
     void insertItem(Item item);
 
     void deleteItem(int id);
+
+    void updateItem(Item item);
 }

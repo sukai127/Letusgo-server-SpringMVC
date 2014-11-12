@@ -32,4 +32,9 @@ public class ItemServiceImpl implements ItemService {
     public void deleteItem(int id) {
         itemDao.deleteItem(id);
     }
+
+    @Override
+    public void updateItem(Item item) {
+
+    }
 }
