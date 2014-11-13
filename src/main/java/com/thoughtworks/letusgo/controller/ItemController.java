@@ -30,4 +30,10 @@ public class ItemController {
         itemServiceImpl.deleteItem(id);
     }
 
+    @RequestMapping(value = "/items", method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
+    public void insertItem(@RequestBody Item item) {
+        itemServiceImpl.insertItem(item);
+    }
+
 }
