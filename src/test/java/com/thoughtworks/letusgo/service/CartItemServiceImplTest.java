@@ -30,6 +30,7 @@ public class CartItemServiceImplTest {
                 new CartItem(3,new Item(3,"ITEM000003","鞋","双",99,new Category(3,"服装")),2));
 
         when(cartItemDao.getCartItems()).thenReturn(cartItems);
+        when(cartItemDao.getCartItem(1)).thenReturn(cartItems.get(0));
 
         ReflectionTestUtils.setField(cartItemService,"cartItemDao",cartItemDao);
     }
@@ -44,5 +45,13 @@ public class CartItemServiceImplTest {
         assertThat(cartItemList.get(1).getItem().getName()).isEqualTo("可乐");
         assertThat(cartItemList.get(1).getItem().getCategory().getName()).isEqualTo("饮料");
 
+    }
+
+    @Test
+    public void should_return_cartItem_when_input_id(){
+
+        CartItem cartItem = cartItemService.getCartItem(1);
+
+        assertThat(cartItem.getCount()).isEqualTo(3);
     }
 }

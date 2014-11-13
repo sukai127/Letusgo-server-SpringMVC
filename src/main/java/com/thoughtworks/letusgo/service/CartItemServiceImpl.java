@@ -17,4 +17,9 @@ public class CartItemServiceImpl implements CartItemService {
     public List<CartItem> getCartItems() {
         return cartItemDao.getCartItems();
     }
+
+    @Override
+    public CartItem getCartItem(int id) {
+        return null;
+    }
 }
