@@ -42,4 +42,10 @@ public class CategoryDaoImpl {
         });
         return category;
     }
+
+    public void insertCategory(Category category){
+
+        String sql = "insert into category values(null,?)";
+        jdbcTemplate.update(sql,category.getName());
+    }
 }
