@@ -48,4 +48,11 @@ public class CartItemDaoImpl {
 
         jdbcTemplate.update(sql,cartItem.getItem().getId(),cartItem.getCount());
     }
+
+    public void updateCartItem(CartItem cartItem){
+
+        String sql = "update cartitem set item_id=?,count=? where id=?";
+
+        jdbcTemplate.update(sql,cartItem.getItem().getId(),cartItem.getCount(),cartItem.getId());
+    }
 }
