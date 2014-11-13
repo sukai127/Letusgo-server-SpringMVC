@@ -37,4 +37,13 @@ public class CartItem {
     public void setCount(int count) {
         this.count = count;
     }
+
+    @Override
+    public String toString() {
+        return "CartItem{" +
+                "id=" + id +
+                ", item=" + item +
+                ", count=" + count +
+                '}';
+    }
 }
