@@ -36,4 +36,11 @@ public class ItemController {
         itemServiceImpl.insertItem(item);
     }
 
+    @RequestMapping(value = "/items/{id}", method = RequestMethod.PUT)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateItem(@PathVariable int id, @RequestBody Item item) {
+        item.setId(id);
+        itemServiceImpl.updateItem(item);
+    }
+
 }
