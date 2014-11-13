@@ -20,6 +20,14 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public List<Item> getItems() {
+
+        List<Item> items = itemDao.getItems();
+
+        for(Item item : items){
+            Category category = categoryDao.getCategoryByItemId(item.getId());
+            item.setCategory(category);
+        }
+
         return itemDao.getItems();
     }
 

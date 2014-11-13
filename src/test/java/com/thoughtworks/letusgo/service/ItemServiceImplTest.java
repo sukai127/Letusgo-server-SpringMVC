@@ -48,7 +48,7 @@ public class ItemServiceImplTest {
 
         assertThat(itemList.size()).isEqualTo(3);
         assertThat(itemList.get(1).getPrice()).isEqualTo(3.5);
-        assertThat(itemList.get(2).getCategory().getName()).isEqualTo("服装");
+        assertThat(itemList.get(0).getCategory().getName()).isEqualTo("水果");
     }
 
     @Test
