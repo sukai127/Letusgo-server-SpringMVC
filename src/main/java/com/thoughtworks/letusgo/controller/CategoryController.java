@@ -3,6 +3,7 @@ package com.thoughtworks.letusgo.controller;
 import com.thoughtworks.letusgo.model.Category;
 import com.thoughtworks.letusgo.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,5 +20,10 @@ public class CategoryController {
     @RequestMapping(value = "/categories" , method = RequestMethod.GET)
     public List<Category> getCategories(){
         return categoryServiceImpl.getCategories();
+    }
+
+    @RequestMapping(value = "/categories/{id}", method = RequestMethod.GET)
+    public Category getCategory(@PathVariable int id){
+        return categoryServiceImpl.getCategory(id);
     }
 }
