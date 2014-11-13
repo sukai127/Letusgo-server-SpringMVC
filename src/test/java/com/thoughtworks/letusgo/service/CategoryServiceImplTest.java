@@ -42,7 +42,7 @@ public class CategoryServiceImplTest {
     @Test
     public void should_return_category_when_input_id(){
 
-        Category category = categoryService.getCategory();
+        Category category = categoryService.getCategory(2);
         assertThat(category.getName()).isEqualTo("水果");
     }
 }
