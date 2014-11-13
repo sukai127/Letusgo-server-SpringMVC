@@ -22,4 +22,9 @@ public class CartItemServiceImpl implements CartItemService {
     public CartItem getCartItem(int id) {
         return cartItemDao.getCartItem(id);
     }
+
+    @Override
+    public void insertCartItem(CartItem cartItem) {
+
+    }
 }

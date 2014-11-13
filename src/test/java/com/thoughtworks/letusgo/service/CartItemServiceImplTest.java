@@ -14,6 +14,7 @@ import java.util.List;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 public class CartItemServiceImplTest {
@@ -53,5 +54,12 @@ public class CartItemServiceImplTest {
         CartItem cartItem = cartItemService.getCartItem(1);
 
         assertThat(cartItem.getCount()).isEqualTo(3);
+    }
+
+    @Test
+    public void should_insert_CartItem(){
+
+        cartItemService.insertCartItem(cartItems.get(0));
+        verify(cartItemDao).insertCartItem(cartItems.get(0));
     }
 }
