@@ -20,6 +20,6 @@ public class CartItemServiceImpl implements CartItemService {
 
     @Override
     public CartItem getCartItem(int id) {
-        return null;
+        return cartItemDao.getCartItem(id);
     }
 }
