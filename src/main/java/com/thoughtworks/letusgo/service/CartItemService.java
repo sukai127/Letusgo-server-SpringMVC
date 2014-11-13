@@ -10,4 +10,6 @@ public interface CartItemService {
     CartItem getCartItem(int id);
 
     void insertCartItem(CartItem cartItem);
+
+    void updateCartItem(CartItem cartItem);
 }

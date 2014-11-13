@@ -62,4 +62,11 @@ public class CartItemServiceImplTest {
         cartItemService.insertCartItem(cartItems.get(0));
         verify(cartItemDao).insertCartItem(cartItems.get(0));
     }
+
+    @Test
+    public void should_update_CartItem(){
+
+        cartItemService.updateCartItem(cartItems.get(0));
+        verify(cartItemDao).updateCartItem(cartItems.get(0));
+    }
 }

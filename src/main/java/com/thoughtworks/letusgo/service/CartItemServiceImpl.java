@@ -27,4 +27,9 @@ public class CartItemServiceImpl implements CartItemService {
     public void insertCartItem(CartItem cartItem) {
         cartItemDao.insertCartItem(cartItem);
     }
+
+    @Override
+    public void updateCartItem(CartItem cartItem) {
+
+    }
 }
