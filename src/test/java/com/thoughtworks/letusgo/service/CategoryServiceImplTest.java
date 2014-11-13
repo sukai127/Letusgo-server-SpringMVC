@@ -60,4 +60,11 @@ public class CategoryServiceImplTest {
         categoryService.updateCategory(categories.get(0));
         verify(categoryDao).updateCategory(categories.get(0));
     }
+
+    @Test
+    public void should_delete_item(){
+
+        categoryService.deleteCategory(1);
+        verify(categoryDao).deleteCategory(1);
+    }
 }
