@@ -16,7 +16,7 @@ import static org.mockito.Mockito.when;
 
 public class CategoryServiceImplTest {
 
-    private CategoryServiceImpl categoryService = new CategoryServiceImpl();
+    private CategoryService categoryService = new CategoryServiceImpl();
     private CategoryDao categoryDao ;
     private ImmutableList<Category> categories;
 
