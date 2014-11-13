@@ -29,6 +29,6 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public void updateCategory(Category category) {
-
+        categoryDao.updateCategory(category);
     }
 }
