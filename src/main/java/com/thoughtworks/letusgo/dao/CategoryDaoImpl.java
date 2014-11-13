@@ -54,4 +54,10 @@ public class CategoryDaoImpl {
         String sql = "update category set name=? where id=?";
         jdbcTemplate.update(sql,category.getName(),category.getId());
     }
+
+    public void deleteCategory(int id){
+
+        String sql = "delete from category where id=?";
+        jdbcTemplate.update(sql,id);
+    }
 }
