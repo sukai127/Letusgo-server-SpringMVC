@@ -3,6 +3,7 @@ package com.thoughtworks.letusgo.controller;
 import com.thoughtworks.letusgo.model.Item;
 import com.thoughtworks.letusgo.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,5 +20,11 @@ public class ItemController {
     public List<Item> getItems() {
         return itemServiceImpl.getItems();
     }
+
+    @RequestMapping(value = "/items/{id}", method = RequestMethod.GET)
+    public Item getItem(@PathVariable int id) {
+        return itemServiceImpl.getItem(id);
+    }
+
 
 }

@@ -72,7 +72,6 @@ public class ItemControllerTest {
     public void should_return_item_when_input_id() throws Exception {
         mockMvc.perform(get("/api/items/1"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$",hasSize(1)))
                 .andExpect(jsonPath("$.name", is("苹果")));
     }
 }
