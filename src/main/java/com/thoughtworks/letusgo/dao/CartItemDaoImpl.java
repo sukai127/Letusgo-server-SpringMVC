@@ -19,6 +19,7 @@ public class CartItemDaoImpl {
 
         List<CartItem> cartItems = null;
         String sql = "select * from cartitem";
+
         cartItems = jdbcTemplate.query(sql,new RowMapper<CartItem>() {
             @Override
             public CartItem mapRow(ResultSet resultSet, int i) throws SQLException {
@@ -26,5 +27,18 @@ public class CartItemDaoImpl {
             }
         });
         return cartItems;
+    }
+
+    public CartItem getCartItem(int id){
+
+        String sql = "select * from cartitem where id=?";
+
+        CartItem cartItem = jdbcTemplate.queryForObject(sql, new Object[]{id}, new RowMapper<CartItem>() {
+            @Override
+            public CartItem mapRow(ResultSet resultSet, int i) throws SQLException {
+                return new CartItem(resultSet.getInt("id"),null,resultSet.getInt("count"));
+            }
+        });
+        return cartItem;
     }
 }
