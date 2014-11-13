@@ -17,4 +17,6 @@ public interface ItemDao {
     void updateItem(Item item);
 
     void deleteItem(int id);
+
+    Item getItemByCartItemId(int id);
 }

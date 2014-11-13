@@ -1,5 +1,6 @@
 package com.thoughtworks.letusgo.dao;
 
+import com.thoughtworks.letusgo.model.Category;
 import com.thoughtworks.letusgo.model.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -72,5 +73,20 @@ public class ItemDaoImpl implements ItemDao {
         String sql = "delete from item where id = ?";
 
         jdbcTemplate.update(sql,id);
+    }
+
+    @Override
+    public Item getItemByCartItemId(int id) {
+        String sql = "select i.*,cg.name c_name from item i,cartitem ci,category cg where i.category_id=cg.id and i.id=ci.item_id and ci.id=?";
+
+        Item item = jdbcTemplate.queryForObject(sql,new Object[]{id},new RowMapper<Item>() {
+            @Override
+            public Item mapRow(ResultSet resultSet, int i) throws SQLException {
+                return new Item(resultSet.getInt("id"),resultSet.getString("barcode"),
+                        resultSet.getString("name"),resultSet.getString("unit"),
+                        resultSet.getDouble("price"),new Category(resultSet.getInt("category_id"),resultSet.getString("c_name")));
+            }
+        });
+        return item;
     }
 }
