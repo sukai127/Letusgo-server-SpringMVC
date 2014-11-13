@@ -35,6 +35,6 @@ public class CartItemServiceImpl implements CartItemService {
 
     @Override
     public void deleteCartItem(int id) {
-
+        cartItemDao.deleteCartItem(id);
     }
 }
