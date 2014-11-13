@@ -48,4 +48,10 @@ public class CategoryDaoImpl {
         String sql = "insert into category values(null,?)";
         jdbcTemplate.update(sql,category.getName());
     }
+
+    public void updateCategory(Category category){
+
+        String sql = "update category set name=? where id=?";
+        jdbcTemplate.update(sql,category.getName(),category.getId());
+    }
 }
