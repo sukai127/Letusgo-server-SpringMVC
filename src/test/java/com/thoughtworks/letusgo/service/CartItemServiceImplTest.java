@@ -48,9 +48,9 @@ public class CartItemServiceImplTest {
         List<CartItem> cartItemList = cartItemService.getCartItems();
 
         assertThat(cartItemList.size()).isEqualTo(3);
-        assertThat(cartItemList.get(1).getCount()).isEqualTo(1);
-        assertThat(cartItemList.get(1).getItem().getName()).isEqualTo("可乐");
-        assertThat(cartItemList.get(1).getItem().getCategory().getName()).isEqualTo("饮料");
+        assertThat(cartItemList.get(0).getCount()).isEqualTo(3);
+        assertThat(cartItemList.get(0).getItem().getName()).isEqualTo("苹果");
+        assertThat(cartItemList.get(0).getItem().getCategory().getName()).isEqualTo("水果");
 
     }
 

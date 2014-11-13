@@ -20,6 +20,13 @@ public class CartItemServiceImpl implements CartItemService {
 
     @Override
     public List<CartItem> getCartItems() {
+        List<CartItem> cartItemList = cartItemDao.getCartItems();
+
+        for(CartItem cartItem:cartItemList){
+            Item item = itemDao.getItemByCartItemId(cartItem.getId());
+            cartItem.setItem(item);
+        }
+
         return cartItemDao.getCartItems();
     }
 
