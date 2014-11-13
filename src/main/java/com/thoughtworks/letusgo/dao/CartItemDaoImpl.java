@@ -11,10 +11,11 @@ import java.sql.SQLException;
 import java.util.List;
 
 @Repository
-public class CartItemDaoImpl {
+public class CartItemDaoImpl implements CartItemDao {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    @Override
     public List<CartItem> getCartItems(){
 
         List<CartItem> cartItems = null;
@@ -29,6 +30,7 @@ public class CartItemDaoImpl {
         return cartItems;
     }
 
+    @Override
     public CartItem getCartItem(int id){
 
         String sql = "select * from cartitem where id=?";
@@ -42,6 +44,7 @@ public class CartItemDaoImpl {
         return cartItem;
     }
 
+    @Override
     public void insertCartItem(CartItem cartItem){
 
         String sql = "insert into cartitem values(null,?,?)";
@@ -49,6 +52,7 @@ public class CartItemDaoImpl {
         jdbcTemplate.update(sql,cartItem.getItem().getId(),cartItem.getCount());
     }
 
+    @Override
     public void updateCartItem(CartItem cartItem){
 
         String sql = "update cartitem set item_id=?,count=? where id=?";
@@ -56,6 +60,7 @@ public class CartItemDaoImpl {
         jdbcTemplate.update(sql,cartItem.getItem().getId(),cartItem.getCount(),cartItem.getId());
     }
 
+    @Override
     public void deleteCartItem(int id){
 
         String sql = "delete from cartitem where id=?";
