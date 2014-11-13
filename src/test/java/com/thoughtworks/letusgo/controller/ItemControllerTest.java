@@ -77,7 +77,7 @@ public class ItemControllerTest {
     @Test
     public void should_delete_item_when_input_id() throws Exception {
         mockMvc.perform(delete("/api/items/1"))
-                .andExpect(status().isOk());
+                .andExpect(status().is(204));
         verify(itemService, times(1)).deleteItem(1);
     }
 }
