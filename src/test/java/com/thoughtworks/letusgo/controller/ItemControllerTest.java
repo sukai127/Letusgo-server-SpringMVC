@@ -25,9 +25,8 @@ import org.springframework.web.context.WebApplicationContext;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.hasSize;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.reset;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -73,5 +72,12 @@ public class ItemControllerTest {
         mockMvc.perform(get("/api/items/1"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.name", is("苹果")));
+    }
+
+    @Test
+    public void should_delete_item_when_input_id() throws Exception {
+        mockMvc.perform(delete("/api/items/1"))
+                .andExpect(status().isOk());
+        verify(itemService, times(1)).deleteItem(1);
     }
 }
