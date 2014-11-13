@@ -1,6 +1,8 @@
 package com.thoughtworks.letusgo.service;
 
+import com.thoughtworks.letusgo.dao.CategoryDao;
 import com.thoughtworks.letusgo.dao.ItemDao;
+import com.thoughtworks.letusgo.model.Category;
 import com.thoughtworks.letusgo.model.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,9 @@ public class ItemServiceImpl implements ItemService {
     @Autowired
     private ItemDao itemDao;
 
+    @Autowired
+    private CategoryDao categoryDao;
+
     @Override
     public List<Item> getItems() {
         return itemDao.getItems();
@@ -20,7 +25,13 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public Item getItem(int id) {
-        return itemDao.getItem(id);
+
+        Item item = itemDao.getItem(id);
+        Category category = categoryDao.getCategoryByItemId(id);
+
+        item.setCategory(category);
+
+        return item;
     }
 
     @Override
