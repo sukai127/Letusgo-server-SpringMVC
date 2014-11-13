@@ -69,4 +69,11 @@ public class CartItemServiceImplTest {
         cartItemService.updateCartItem(cartItems.get(0));
         verify(cartItemDao).updateCartItem(cartItems.get(0));
     }
+
+    @Test
+    public void should_delete_CartItem(){
+
+        cartItemService.deleteCartItem(1);
+        verify(cartItemDao).deleteCartItem(1);
+    }
 }
