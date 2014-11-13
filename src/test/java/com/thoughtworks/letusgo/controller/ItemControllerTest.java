@@ -21,9 +21,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -91,5 +89,22 @@ public class ItemControllerTest {
 
         ArgumentCaptor<Item> item = ArgumentCaptor.forClass(Item.class);
         verify(itemService, times(1)).insertItem(item.capture());
+    }
+
+    @Test
+    public void should_update_item() throws Exception {
+        String requestBody = "{\"id\":1, \"barcode\":\"ITEM000001\", " +
+                "\"name\":\"苹果\", " +
+                "\"price\":3.5, " +
+                "\"unit\":\"斤\", " +
+                "\"category\":{\"id\":1,\"name\":\"水果\"}}";
+        mockMvc.perform(put("/api/items/1")
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .content(requestBody))
+                .andExpect(status().is2xxSuccessful());
+
+        ArgumentCaptor<Item> item = ArgumentCaptor.forClass(Item.class);
+        verify(itemService, times(1)).updateItem(item.capture());
     }
 }
