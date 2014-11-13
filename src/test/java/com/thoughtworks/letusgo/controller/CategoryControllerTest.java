@@ -17,7 +17,10 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.hasSize;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -64,5 +67,12 @@ public class CategoryControllerTest {
         mockMvc.perform(get("/api/categories/1"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.name",is("水果")));
+    }
+
+    @Test
+    public void should_delete_category_when_input_id() throws Exception {
+        mockMvc.perform(delete("/api/categories/1"))
+                .andExpect(status().is(204));
+        verify(categoryService, times(1)).deleteCategory(1);
     }
 }
