@@ -8,11 +8,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class CartItemServiceImpl {
+public class CartItemServiceImpl implements CartItemService {
 
     @Autowired
     private CartItemDao cartItemDao;
 
+    @Override
     public List<CartItem> getCartItems() {
         return cartItemDao.getCartItems();
     }

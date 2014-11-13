@@ -18,7 +18,7 @@ import static org.mockito.Mockito.when;
 
 public class CartItemServiceImplTest {
 
-    private CartItemServiceImpl cartItemService = new CartItemServiceImpl();
+    private CartItemService cartItemService = new CartItemServiceImpl();
     private CartItemDao cartItemDao ;
     private ImmutableList<CartItem> cartItems;
 
