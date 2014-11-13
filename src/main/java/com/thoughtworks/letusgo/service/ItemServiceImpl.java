@@ -13,10 +13,10 @@ import java.util.List;
 public class ItemServiceImpl implements ItemService {
 
     @Autowired
-    private ItemDao itemDao;
+    private CategoryDao categoryDao;
 
     @Autowired
-    private CategoryDao categoryDao;
+    private ItemDao itemDao;
 
     @Override
     public List<Item> getItems() {

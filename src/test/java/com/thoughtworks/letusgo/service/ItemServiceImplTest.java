@@ -1,6 +1,8 @@
 package com.thoughtworks.letusgo.service;
 
 import com.google.common.collect.ImmutableList;
+import com.thoughtworks.letusgo.dao.CategoryDao;
+import com.thoughtworks.letusgo.dao.CategoryDaoImpl;
 import com.thoughtworks.letusgo.dao.ItemDao;
 import com.thoughtworks.letusgo.dao.ItemDaoImpl;
 import com.thoughtworks.letusgo.model.Category;
@@ -21,16 +23,22 @@ public class ItemServiceImplTest {
     private ItemService itemService = new ItemServiceImpl();
     private ImmutableList<Item> itemList;
     private ItemDao itemDao;
+    private CategoryDao categoryDao;
+
     @Before
     public void init(){
         itemDao = mock(ItemDaoImpl.class);
+        categoryDao = mock(CategoryDaoImpl.class);
         itemList = ImmutableList.of(new Item(1,"ITEM000001","苹果","斤",3.5,new Category(1,"水果")),
                 new Item(2,"ITEM000002","可乐","瓶",3.5,new Category(2,"饮料")),
                 new Item(3,"ITEM000003","鞋","双",95,new Category(3,"服装")));
-        when(itemDao.getItems()).thenReturn(itemList);
 
+        when(itemDao.getItems()).thenReturn(itemList);
         when(itemDao.getItem(1)).thenReturn(itemList.get(0));
+        when(categoryDao.getCategoryByItemId(1)).thenReturn(itemList.get(0).getCategory());
+
         ReflectionTestUtils.setField(itemService,"itemDao",itemDao);
+        ReflectionTestUtils.setField(itemService,"categoryDao",categoryDao);
     }
 
     @Test
