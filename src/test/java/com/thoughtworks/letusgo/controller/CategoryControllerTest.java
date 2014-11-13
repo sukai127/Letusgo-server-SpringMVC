@@ -2,13 +2,16 @@ package com.thoughtworks.letusgo.controller;
 
 import com.google.common.collect.ImmutableList;
 import com.thoughtworks.letusgo.model.Category;
+import com.thoughtworks.letusgo.model.Item;
 import com.thoughtworks.letusgo.service.CategoryService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -22,6 +25,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -74,5 +78,19 @@ public class CategoryControllerTest {
         mockMvc.perform(delete("/api/categories/1"))
                 .andExpect(status().is(204));
         verify(categoryService, times(1)).deleteCategory(1);
+    }
+
+    @Test
+    public void should_insert_category() throws Exception {
+        String requestBody = "{\"id\":1,\"name\":\"水果\"}";
+
+        mockMvc.perform(post("/api/categories")
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .content(requestBody))
+                .andExpect(status().isCreated());
+
+        ArgumentCaptor<Category> category = ArgumentCaptor.forClass(Category.class);
+        verify(categoryService, times(1)).insertCategory(category.capture());
     }
 }
