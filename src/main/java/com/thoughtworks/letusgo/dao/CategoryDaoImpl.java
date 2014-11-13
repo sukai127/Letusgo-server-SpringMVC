@@ -29,4 +29,17 @@ public class CategoryDaoImpl {
         });
         return categories;
     }
+
+    public Category getCategory(int id){
+
+        String sql = "select * from category where id=?";
+
+        Category category = jdbcTemplate.queryForObject(sql,new Object[]{id},new RowMapper<Category>() {
+            @Override
+            public Category mapRow(ResultSet resultSet, int i) throws SQLException {
+                return new Category(resultSet.getInt("id"),resultSet.getString("name"));
+            }
+        });
+        return category;
+    }
 }
