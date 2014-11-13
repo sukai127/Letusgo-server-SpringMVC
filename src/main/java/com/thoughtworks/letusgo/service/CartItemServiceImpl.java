@@ -14,6 +14,6 @@ public class CartItemServiceImpl {
     private CartItemDao cartItemDao;
 
     public List<CartItem> getCartItems() {
-        return null;
+        return cartItemDao.getCartItems();
     }
 }
