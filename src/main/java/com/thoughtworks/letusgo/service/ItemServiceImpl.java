@@ -28,7 +28,7 @@ public class ItemServiceImpl implements ItemService {
             item.setCategory(category);
         }
 
-        return itemDao.getItems();
+        return items;
     }
 
     @Override
