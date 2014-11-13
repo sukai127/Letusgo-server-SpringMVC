@@ -55,4 +55,11 @@ public class CartItemDaoImpl {
 
         jdbcTemplate.update(sql,cartItem.getItem().getId(),cartItem.getCount(),cartItem.getId());
     }
+
+    public void deleteCartItem(int id){
+
+        String sql = "delete from cartitem where id=?";
+
+        jdbcTemplate.update(sql,id);
+    }
 }
