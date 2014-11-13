@@ -58,4 +58,11 @@ public class CategoryControllerTest {
                 .andExpect(jsonPath("$",hasSize(3)))
                 .andExpect(jsonPath("$[0].name", is("水果")));
     }
+
+    @Test
+    public void should_return_category_when_input_id() throws Exception {
+        mockMvc.perform(get("/api/categories/1"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.name",is("水果")));
+    }
 }
