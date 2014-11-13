@@ -26,6 +26,7 @@ public class CategoryServiceImplTest {
         categories = ImmutableList.of(new Category(1,"饮料"),new Category(2,"水果"),new Category(3,"服装"));
         when(categoryDao.getCategories()).thenReturn(categories);
 
+        when(categoryDao.getCategory(2)).thenReturn(categories.get(1));
         ReflectionTestUtils.setField(categoryService,"categoryDao",categoryDao);
     }
 
@@ -36,5 +37,12 @@ public class CategoryServiceImplTest {
 
         assertThat(categoryList.size()).isEqualTo(3);
         assertThat(categoryList.get(2).getName()).isEqualTo("服装");
+    }
+
+    @Test
+    public void should_return_category_when_input_id(){
+
+        Category category = categoryService.getCategory();
+        assertThat(category.getName()).isEqualTo("水果");
     }
 }
