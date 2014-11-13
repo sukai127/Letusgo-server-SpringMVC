@@ -11,11 +11,12 @@ import java.sql.SQLException;
 import java.util.List;
 
 @Repository
-public class CategoryDaoImpl {
+public class CategoryDaoImpl implements CategoryDao {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    @Override
     public List<Category> getCategories(){
 
         List<Category> categories;
@@ -30,6 +31,7 @@ public class CategoryDaoImpl {
         return categories;
     }
 
+    @Override
     public Category getCategory(int id){
 
         String sql = "select * from category where id=?";
@@ -43,18 +45,21 @@ public class CategoryDaoImpl {
         return category;
     }
 
+    @Override
     public void insertCategory(Category category){
 
         String sql = "insert into category values(null,?)";
         jdbcTemplate.update(sql,category.getName());
     }
 
+    @Override
     public void updateCategory(Category category){
 
         String sql = "update category set name=? where id=?";
         jdbcTemplate.update(sql,category.getName(),category.getId());
     }
 
+    @Override
     public void deleteCategory(int id){
 
         String sql = "delete from category where id=?";
