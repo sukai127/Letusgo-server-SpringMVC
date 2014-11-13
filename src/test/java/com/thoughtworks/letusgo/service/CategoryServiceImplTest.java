@@ -53,4 +53,11 @@ public class CategoryServiceImplTest {
         categoryService.insertCategory(categories.get(0));
         verify(categoryDao).insertCategory(categories.get(0));
     }
+
+    @Test
+    public void should_update_item(){
+
+        categoryService.updateCategory(categories.get(0));
+        verify(categoryDao).updateCategory(categories.get(0));
+    }
 }
