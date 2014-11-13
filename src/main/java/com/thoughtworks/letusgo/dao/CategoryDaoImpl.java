@@ -65,4 +65,18 @@ public class CategoryDaoImpl implements CategoryDao {
         String sql = "delete from category where id=?";
         jdbcTemplate.update(sql,id);
     }
+
+    @Override
+    public Category getCategoryByItemId(int itemId) {
+
+        String sql = "select c.* from item i,category c where i.category_id=c.id and i.id=?";
+
+        Category category = jdbcTemplate.queryForObject(sql,new Object[]{itemId},new RowMapper<Category>() {
+            @Override
+            public Category mapRow(ResultSet resultSet, int i) throws SQLException {
+                return new Category(resultSet.getInt("id"),resultSet.getString("name"));
+            }
+        });
+        return category;
+    }
 }
