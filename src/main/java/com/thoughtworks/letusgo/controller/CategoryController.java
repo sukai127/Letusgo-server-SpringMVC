@@ -36,4 +36,11 @@ public class CategoryController {
     public void insertCategory(@RequestBody Category category){
         categoryServiceImpl.insertCategory(category);
     }
+
+    @RequestMapping(value = "/categories/{id}",method = RequestMethod.PUT)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateCategory(@PathVariable int id, @RequestBody Category category){
+        category.setId(id);
+        categoryServiceImpl.updateCategory(category);
+    }
 }
