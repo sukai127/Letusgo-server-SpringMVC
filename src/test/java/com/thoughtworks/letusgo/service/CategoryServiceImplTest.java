@@ -12,6 +12,7 @@ import java.util.List;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 public class CategoryServiceImplTest {
@@ -44,5 +45,12 @@ public class CategoryServiceImplTest {
 
         Category category = categoryService.getCategory(2);
         assertThat(category.getName()).isEqualTo("水果");
+    }
+
+    @Test
+    public void should_insert_item(){
+
+        categoryService.insertCategory(categories.get(0));
+        verify(categoryDao).insertCategory(categories.get(0));
     }
 }
