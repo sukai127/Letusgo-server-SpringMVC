@@ -1,7 +1,9 @@
 package com.thoughtworks.letusgo.service;
 
 import com.thoughtworks.letusgo.dao.CartItemDao;
+import com.thoughtworks.letusgo.dao.ItemDao;
 import com.thoughtworks.letusgo.model.CartItem;
+import com.thoughtworks.letusgo.model.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,9 @@ public class CartItemServiceImpl implements CartItemService {
     @Autowired
     private CartItemDao cartItemDao;
 
+    @Autowired
+    private ItemDao itemDao;
+
     @Override
     public List<CartItem> getCartItems() {
         return cartItemDao.getCartItems();
@@ -20,7 +25,12 @@ public class CartItemServiceImpl implements CartItemService {
 
     @Override
     public CartItem getCartItem(int id) {
-        return cartItemDao.getCartItem(id);
+
+        CartItem cartItem = cartItemDao.getCartItem(id);
+        Item item = itemDao.getItemByCartItemId(id);
+        cartItem.setItem(item);
+
+        return cartItem;
     }
 
     @Override
