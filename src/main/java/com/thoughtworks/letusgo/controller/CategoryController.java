@@ -30,4 +30,10 @@ public class CategoryController {
     public void deleteCategory(@PathVariable int id){
         categoryServiceImpl.deleteCategory(id);
     }
+
+    @RequestMapping(value = "/categories",method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
+    public void insertCategory(@RequestBody Category category){
+        categoryServiceImpl.insertCategory(category);
+    }
 }
