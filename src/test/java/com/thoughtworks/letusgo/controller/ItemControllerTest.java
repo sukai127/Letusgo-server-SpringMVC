@@ -49,7 +49,7 @@ public class ItemControllerTest {
 
     @Test
     public void should_return_itemList() throws Exception {
-        mockMvc.perform(get("/items"))
+        mockMvc.perform(get("/api/items"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].name",is("苹果")));
     }
