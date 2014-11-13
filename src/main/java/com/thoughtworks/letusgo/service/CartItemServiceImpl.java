@@ -30,6 +30,6 @@ public class CartItemServiceImpl implements CartItemService {
 
     @Override
     public void updateCartItem(CartItem cartItem) {
-
+        cartItemDao.updateCartItem(cartItem);
     }
 }
