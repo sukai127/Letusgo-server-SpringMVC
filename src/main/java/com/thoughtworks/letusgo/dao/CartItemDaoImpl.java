@@ -41,4 +41,11 @@ public class CartItemDaoImpl {
         });
         return cartItem;
     }
+
+    public void insertCartItem(CartItem cartItem){
+
+        String sql = "insert into cartitem values(null,?,?)";
+
+        jdbcTemplate.update(sql,cartItem.getItem().getId(),cartItem.getCount());
+    }
 }
