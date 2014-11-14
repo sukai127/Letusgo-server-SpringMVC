@@ -6,7 +6,6 @@ import com.thoughtworks.letusgo.model.CartItem;
 import com.thoughtworks.letusgo.model.Category;
 import com.thoughtworks.letusgo.model.Item;
 import com.thoughtworks.letusgo.service.CartItemService;
-import com.thoughtworks.letusgo.service.CategoryService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -68,6 +67,14 @@ public class CartItemControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$",hasSize(3)))
                 .andExpect(jsonPath("$[0].count", is(10)));
+    }
+
+    @Test
+    public void should_return_cartItem_when_input_id() throws Exception {
+        mockMvc.perform(get("/api/cartItems/1"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.count",is(10)));
+
     }
 
 }
