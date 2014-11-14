@@ -9,9 +9,11 @@ import com.thoughtworks.letusgo.service.CartItemService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -25,6 +27,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -88,4 +91,20 @@ public class CartItemControllerTest {
         verify(cartItemService, times(1)).deleteCartItem(1);
     }
 
+    @Test
+    public void should_insert_cartItem() throws Exception {
+        String requestBody = "{\"id\":1, \"item\":{\"id\":1, \"barcode\":\"ITEM000001\", " +
+                "\"name\":\"苹果\", " +
+                "\"price\":3.5, " +
+                "\"unit\":\"斤\", " +
+                "\"category\":{\"id\":1,\"name\":\"水果\"}},\"count\":2}";
+        mockMvc.perform(post("/api/cartItems")
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .content(requestBody))
+                .andExpect(status().isCreated());
+
+        ArgumentCaptor<CartItem> cartItem = ArgumentCaptor.forClass(CartItem.class);
+        verify(cartItemService, times(1)).insertCartItem(cartItem.capture());
+    }
 }
