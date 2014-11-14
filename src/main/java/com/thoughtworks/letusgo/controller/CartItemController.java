@@ -4,10 +4,8 @@ import com.thoughtworks.letusgo.model.CartItem;
 import com.thoughtworks.letusgo.model.Item;
 import com.thoughtworks.letusgo.service.CartItemService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,4 +25,9 @@ public class CartItemController {
         return cartItemService.getCartItem(id);
     }
 
+    @RequestMapping(value = "/cartItems/{id}",method = RequestMethod.DELETE)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteCartItem(@PathVariable int id){
+     cartItemService.deleteCartItem(id);
+    }
 }
