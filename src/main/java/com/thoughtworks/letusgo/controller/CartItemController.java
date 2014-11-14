@@ -30,4 +30,10 @@ public class CartItemController {
     public void deleteCartItem(@PathVariable int id){
      cartItemService.deleteCartItem(id);
     }
+
+    @RequestMapping(value = "/cartItems", method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
+    public void insertCartItem(@RequestBody CartItem cartItem) {
+        cartItemService.insertCartItem(cartItem);
+    }
 }
