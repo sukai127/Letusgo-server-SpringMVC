@@ -73,7 +73,8 @@ public class CartItemControllerTest {
     public void should_return_cartItem_when_input_id() throws Exception {
         mockMvc.perform(get("/api/cartItems/1"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.count",is(10)));
+                .andExpect(jsonPath("$.count",is(10)))
+                .andExpect(jsonPath("$.item.name",is("苹果")));
 
     }
 
