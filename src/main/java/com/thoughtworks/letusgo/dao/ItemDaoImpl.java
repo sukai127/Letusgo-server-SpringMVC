@@ -55,7 +55,7 @@ public class ItemDaoImpl implements ItemDao {
     public void insertItem(Item item){
         String sql = "insert into item values(null,?,?,?,?,?)";
 
-        jdbcTemplate.update(sql,item.getUnit(),item.getPrice(),item.getCategory().getId());
+        jdbcTemplate.update(sql,item.getBarcode(),item.getName(),item.getPrice(),item.getUnit(),item.getCategory().getId());
     }
 
     @Override
